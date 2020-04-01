@@ -4,11 +4,19 @@ import { Component } from 'react';
 
 import Form from './components/Form';
 
+const API_KEY = "6eda369cac804921bb6b3c0ecc8a24a0";
+
 class App extends Component {
   
-  getRecipe(e) {
+  getRecipe = async (e) => {
+    const recipeName = e.target.elements.recipeName.value;
     e.preventDefault();
-    console.log(e.target.elements.recipeName.value);
+
+    const api_call = await fetch(`
+                      https://api.spoonacular.com/recipes/search?query=${recipeName}
+                      &apiKey=${API_KEY}`);
+    const data = await api_call.json();
+    console.log(data);
   }
 
   render(){
