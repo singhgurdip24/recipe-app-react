@@ -3,12 +3,14 @@ import './App.css';
 import { Component } from 'react';
 
 import Form from './components/Form';
+import Recipe from './components/Recipe';
 
 const API_KEY = "6eda369cac804921bb6b3c0ecc8a24a0";
 
 class App extends Component {
   state = {
-    recipes : []
+    recipes : [],
+    baseUrlImg : ''
   }
   getRecipe = async (e) => {
     const recipeName = e.target.elements.recipeName.value;
@@ -19,6 +21,7 @@ class App extends Component {
                       &apiKey=${API_KEY}`);
     const data = await api_call.json();
     this.setState({recipes : data.results});
+    this.setState({baseUrlImg: data.baseUri});
   }
 
   render(){
@@ -28,11 +31,7 @@ class App extends Component {
           <h1 className="App-title">Recipe Search</h1>
         </header>
         <Form getRecipe={this.getRecipe}/>
-        {
-          this.state.recipes.map (
-            recipe => <p key={ recipe.id }> { recipe.title } </p>
-          )
-        }
+        <Recipe recipes={this.state.recipes} imgUrl={this.state.baseUrlImg}/>
       </div>
     );
   }
