@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Link} from 'react-router-dom';
+
 const Recipe = props => (
     <div className="container">
         <div className="row">
@@ -20,7 +22,9 @@ const Recipe = props => (
                                     }
                                 </h5>
                             </div>
-                            <button className="recipe_buttons">View Button</button>
+                            <button className="recipe_buttons">
+                                <Link to ={{ pathname:`recipe/${recipe.id}` }} >View Button</Link>
+                            </button>
                         </div>
                     </div>   
                 );
