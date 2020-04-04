@@ -7,15 +7,16 @@ const Recipe = props => (
             props.recipes.map (recipe => {
                 return(
                     <div className="col-md-4" key={recipe.id}>
-                        <div className="recipe__box">
+                        <div className="recipes__box">
                             <img
                             className="recipe__box-img"
                             src={`${props.imgUrl}${recipe.imageUrls}`}
                             alt={recipe.title }
                             />
                             <div className="recipe__text">
-                                <h5>{recipe.title}</h5>
+                                <h5 className="recipes__title">{recipe.title}</h5>
                             </div>
+                            <button className="recipe_buttons">View Button</button>
                         </div>
                     </div>   
                 );
