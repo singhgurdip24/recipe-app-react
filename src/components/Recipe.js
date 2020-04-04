@@ -6,7 +6,7 @@ const Recipe = props => (
         {
             props.recipes.map (recipe => {
                 return(
-                    <div className="col-md-4">
+                    <div className="col-md-4" key={recipe.id}>
                         <div className="recipe__box">
                             <img
                             className="recipe__box-img"
