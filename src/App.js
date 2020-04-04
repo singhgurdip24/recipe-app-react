@@ -18,7 +18,7 @@ class App extends Component {
 
     const api_call = await fetch(`
                       https://api.spoonacular.com/recipes/search?query=${recipeName}
-                      &apiKey=${API_KEY}`);
+                      &apiKey=${API_KEY}&number=9`);
     const data = await api_call.json();
     this.setState({recipes : data.results});
     this.setState({baseUrlImg: data.baseUri});
