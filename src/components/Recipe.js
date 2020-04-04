@@ -23,7 +23,14 @@ const Recipe = props => (
                                 </h5>
                             </div>
                             <button className="recipe_buttons">
-                                <Link to ={{ pathname:`recipe/${recipe.id}` }} >View Button</Link>
+                                <Link 
+                                    to ={{ 
+                                        pathname:`recipe/${recipe.id}` ,
+                                        state: {recipe: recipe.title}
+                                    }}
+                                >
+                                    View Button
+                                </Link>
                             </button>
                         </div>
                     </div>   
