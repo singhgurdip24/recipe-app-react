@@ -24,6 +24,17 @@ class App extends Component {
     this.setState({baseUrlImg: data.baseUri});
   }
 
+  componentDidMount = () => {
+    const recipeFromStorage = localStorage.getItem("recipes");
+    this.setState({"recipes" : JSON.parse(recipeFromStorage) });
+    this.setState({"baseUrlImg" : localStorage.getItem("baseUrl") });
+  }
+  componentDidUpdate = () => {
+    const localrecipes = JSON.stringify(this.state.recipes);
+    localStorage.setItem("recipes", localrecipes);
+    localStorage.setItem("baseUrl", this.state.baseUrlImg);
+  }
+
   render(){
     return (
       <div className="App">
