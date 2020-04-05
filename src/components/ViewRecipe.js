@@ -14,7 +14,8 @@ class ViewRecipe extends React.Component{
         const request = await fetch(`
                           https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=${API_KEY}`);
         const data = await request.json();
-        console.log(data);
+        this.setState({activeRecipe:data})
+        console.log(this.state.activeRecipe);
     }
 
     render(){
