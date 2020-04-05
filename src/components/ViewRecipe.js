@@ -10,7 +10,6 @@ class ViewRecipe extends React.Component{
     }
 
     componentDidMount = async () => {
-        // const recipeTitle = this.props.location.state.recipe;
         const recipeId = this.props.location.state.recipeId;
         const request = await fetch(`
                           https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=${API_KEY}`);
@@ -23,19 +22,21 @@ class ViewRecipe extends React.Component{
         const recipe = this.state.activeRecipe;
         return (
           <div className="container">
-              <div className="active-recipe">
-                <img className="active-recipe__img" src={recipe.image} alt={recipe.title}/>
-                <h3 className="active-recipe__title">{ recipe.title }</h3>
-                {/* <h4 className="active-recipe__publisher">
-                  Publisher: <span>{ recipe.publisher }</span>
-                </h4> */}
-                <p className="active-recipe__website">Website: 
-                  <span><a href={recipe.sourceUrl}>{recipe.sourceUrl}</a></span>
-                </p>
-                <button className="active-recipe__button">
-                  <Link to="/">Go Home</Link>
-                </button>
-              </div>
+            <header className="App-header">
+                <h1 className="App-title">Recipe Search</h1>
+            </header>
+            { this.state.activeRecipe.length !== 0 && 
+                <div className="active-recipe">
+                    <img className="active-recipe__img" src={recipe.image} alt={recipe.title}/>
+                    <h3 className="active-recipe__title">{ recipe.title }</h3>
+                    <p className="active-recipe__website">Website: 
+                        <span><a href={recipe.spoonacularSourceUrl}>{recipe.spoonacularSourceUrl}</a></span>
+                    </p>
+                    <button className="active-recipe__button">
+                      <Link to="/">Go Home</Link>
+                    </button>
+                </div>
+            }
           </div>
         );
     }
